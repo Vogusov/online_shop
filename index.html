@@ -47,8 +47,9 @@
         </header>
 
         <main class="main">
+            <products ref="products"></products>
 
-            <div id="products" class="products">
+            <!-- <div id="products" class="products">
 
                 <div class="product_item" data-id="${this.id_product}" 
                   v-for="product of filtered" 
@@ -61,7 +62,7 @@
                     <button class="buy-button" @click="addProduct(product)">В корзину</button>
                 </div>
 
-            </div>
+            </div> -->
         </main>
 
     </div>
@@ -72,7 +73,9 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/prodComp.js"></script>
     <script src="script.js"></script>
+    
 </body>
 
 </html>

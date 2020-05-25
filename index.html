@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Shop</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <header class="header">
+            <div class="logo">SHOP</div>
+            <div class="search-area">
+                <form action="#" class="search-form" @submit.prevent="filter">
+                    <input type="text" class="search-field" v-model="userSearch">
+                    <input type="button" value="Search" class="search-button">
+                </form>
+
+            </div>
+            <div class="cart-area">
+                <input id="cart_button" class="cart-button" type="button" value="Cart">
+                <div id="cart" class="cart">
+                    <!-- <div class="cart-item">
+                        <img class="cart-item__img" src="https://via.placeholder.com/100" alt="Картинка товара">
+                        <div class="cart-item__info">
+                            <h3 class="cart-item__product-name">Мышка</h3>
+                            <span class="cart-item__product-price">1500 руб</span>
+                            <span class="cart-item__quantity">Колличество: 1</span>
+                            <button class="remove-button">удалить</button>
+                        </div>
+                    </div>
+                    <div class="cart-item">
+                        <img class="cart-item__img" src="https://via.placeholder.com/100" alt="Картинка товара">
+                        <div class="cart-item__info">
+                            <h3 class="cart-item__product-name">Шишка</h3>
+                            <span class="cart-item__product-price">1000 руб</span>
+                            <span class="cart-item__quantity">Колличество: 1</span>
+                            <button class="remove-button">удалить</button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+
+            <div id="products" class="products">
+
+                <div class="product_item" data-id="${this.id_product}" 
+                  v-for="product of filtered" 
+                  key="product.id_product">
+                    <div id=product_img class="product-img">
+                        <img :src="imgCatalog" alt="Картинка товара">
+                    </div>
+                    <h3 id="product_name" class="product-name">{{ product.product_name }}</h3>
+                    <span id="product_price" class="product-price">{{ product.price }} руб.</span>
+                    <button class="buy-button" @click="addProduct(product)">В корзину</button>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

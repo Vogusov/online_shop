@@ -1,12 +1,11 @@
 const API_URL = 'https://raw.githubusercontent.com/Vogusov/store_API/master';
-// const image = 'https://place-hold.it/200x200';
-const cartImage = 'https://place-hold.it/100x100';
+// const cartImage = 'https://place-hold.it/100x100';
 
 
 let app = new Vue ({
   el: '#app',
   data: {    
-    userSearch: '',
+    // userSearch: '',
   },
 
   methods: {
@@ -14,33 +13,25 @@ let app = new Vue ({
       return fetch(url)
         .then(result => result.json())
         .catch(error => {
+          this.$root.$refs.err.setError(error)
           console.log(error);
         })
     },
     // addProduct(product) {
     //   console.log(`Product id_${product.id_product} was added to your cart`);
     // },
-    filter() {
-      let regExp = new RegExp(this.userSearch, 'i');
-      this.filtered = this.products.filter(el => regExp.test(el.product_name));
-    }
+    // filter() {
+    //   let regExp = new RegExp(this.userSearch, 'i');
+    //   this.filtered = this.products.filter(el => regExp.test(el.product_name));
+    // }
     
   },
 
-  // mounted() {
-  //   this.getJSON(`${API_URL + this.catalogUrl}`)
-  //     .then(data => {
-  //       console.log(data);
-  //       for (let el of data) {
-  //         this.products.push(el);
-  //         this.filtered.push(el);
-  //         console.log(el);
-  //       }
-  //     })
-  // },
-
   components: {
-    products
+    products,
+    cart,
+    search,
+    error
   }
 })
 

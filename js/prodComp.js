@@ -2,14 +2,15 @@ let product = {
   props: ['product', 'img',],
   
   template:`
-  <div class="product_item"  >
-    <div id=product_img class="product-img">
-      <img :src="img" alt="Картинка товара">
+    <div class="product_item">
+      <div id=product_img class="product-img">
+        <img :src="img" alt="Картинка товара">
+      </div>
+      <h3 id="product_name" class="product-name"> {{ product.product_name }} </h3>
+      <span id="product_price" class="product-price"> {{ product.price }} руб.</span>
+      <button class="buy-button" 
+         @click="$root.$refs.cart.addProduct(product)">Купить</button>
     </div>
-    <h3 id="product_name" class="product-name"> {{ product.product_name }} </h3>
-    <span id="product_price" class="product-price"> {{ product.price }} руб.</span>
-    <button class="buy-button" @click="$parent.addProduct(product)">Купить</button>
-  </div>
   `
 }
 
@@ -26,9 +27,7 @@ let products = {
   },
   
   methods: {
-    addProduct(product) {
-      console.log(`Product id_${product.id_product} was added to your cart`);
-    },
+    
   },
   
   template: `
@@ -49,7 +48,7 @@ let products = {
   mounted() {
     this.$parent.getJSON(`${API_URL + this.catalogUrl}`)
       .then(data => {
-        console.log(data);
+        console.log('Products: ', data);
         for (let el of data) {
           this.products.push(el);
           this.filtered.push(el);

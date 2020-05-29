@@ -10,14 +10,14 @@ let search = {
   methods: {
     filter() {
       let regExp = new RegExp(this.userSearch, 'i');
-      this.$parent.filtered = this.$parent.products.filter(el => regExp.test(el.product_name));
+      this.$root.$refs.products.filtered = this.$root.$refs.products.products.filter(el => regExp.test(el.product_name));
     }
   },
 
   template: `
     <form action="#" class="search-form" @submit.prevent="filter">
       <input type="text" class="search-field" v-model="userSearch">
-      <input type="button" value="Search" class="search-button">
+      <input type="button" value="Search" class="search-button" @click="filter">
     </form>
   `
 }

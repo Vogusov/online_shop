@@ -33,31 +33,34 @@ let cart = {
 
   methods: {
     addProduct(product) {
-      this.$parent.getJSON(`${API_URL}/addToBasket.json`)
-        .then (data => {
-          if (data.result) {
-            let find = this.cartItems.find(el => el.id_product === product.id_product)
-            if (find) {
+      let find = this.cartItems.find(el => el.id_product === product.id_product)
+      if (find) {
+        this.$parent.putJSON(`/api/cart/${find.id_product}`, {quantity: 1})
+          .then(data => {
+            if(data.result) {
               find.quantity++
-            } else {
-              let prod = Object.assign({ quantity: 1, product })
-              this.cartItems.push(prod)
-            }
-          }
-        })
+            } 
+          })
+      } else {
+        let prod = Object.assign({quantity: 1}, product)
+        this.$parent.postJSON('/api/cart', prod)
+          .then(data => {
+            this.cartItems.push(prod)
+          })
+      }
     },
 
     removeProduct(product) {
-      this.$parent.getJSON(`${API_URL}/deleteFromBasket.json`)
-        .then (data => {
-          if (data.result) {
-            if (product.quantity > 1) {
-              product.quantity --
-            } else {
-              this.cartItems.splice(this.cartItems.indexOf(product), 1)
-            }
-          }
-        })
+    //   this.$parent.getJSON(`${API_URL}/deleteFromBasket.json`)
+    //     .then (data => {
+    //       if (data.result) {
+    //         if (product.quantity > 1) {
+    //           product.quantity --
+    //         } else {
+    //           this.cartItems.splice(this.cartItems.indexOf(product), 1)
+    //         }
+    //       }
+    //     })
     },
 
     toggleCart() {
@@ -87,12 +90,11 @@ let cart = {
   },
 
   mounted() {
-    this.$parent.getJSON(`${API_URL + this.cartUrl}`)
+    this.$parent.getJSON(`/api/cart`)
       .then(data => {
         console.log('Cart contains: ', data);
         for (let el of data.contents) {
-          this.cartItems.push(el);
-          
+          this.cartItems.push(el);          
         }
       })
   } 

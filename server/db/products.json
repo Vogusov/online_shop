@@ -1,0 +1,52 @@
+[
+  {
+    "id_product": 101,
+    "product_name": "Ноутбук",
+    "price": 666
+  },
+  {
+    "id_product": 102,
+    "product_name": "Мышка",
+    "price": 1000
+  },
+  {
+    "id_product": 103,
+    "product_name": "Флэшка 16Гб",
+    "price": 456
+  },
+  {
+    "id_product": 104,
+    "product_name": "Монитор",
+    "price": 12000
+  },
+  {
+    "id_product": 105,
+    "product_name": "Коврик для мышки",
+    "price": 500
+  },
+  {
+    "id_product": 106,
+    "product_name": "Ноутбук игровой",
+    "price": 120500
+  },
+  {
+    "id_product": 107,
+    "product_name": "Флэшка 256Гб",
+    "price": 1500
+  },
+  {
+    "id_product": 108,
+    "product_name": "Колонки",
+    "price": 2500
+  },
+  {
+    "id_product": 109,
+    "product_name": "Мышка б/п",
+    "price": 1500
+  },
+  {
+    "id_product": 110,
+    "product_name": "Мышка игровая",
+    "price": 2000
+  }  
+]

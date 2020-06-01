@@ -7,7 +7,6 @@ let error = {
 
   methods: {
     setError(error) {
-      console.log(11);
       this.text = error
     }
   },

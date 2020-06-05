@@ -1,24 +1,5 @@
 {
     "amount": 0,
     "countGoods": 0,
-    "contents": [
-        {
-            "quantity": 10,
-            "id_product": 101,
-            "product_name": "Ноутбук",
-            "price": 666
-        },
-        {
-            "quantity": 9,
-            "id_product": 102,
-            "product_name": "Мышка",
-            "price": 1000
-        },
-        {
-            "quantity": 6,
-            "id_product": 103,
-            "product_name": "Флэшка 16Гб",
-            "price": 456
-        }
-    ]
+    "contents": []
 }

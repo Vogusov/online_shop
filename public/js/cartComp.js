@@ -26,13 +26,13 @@ let cart = {
     return {
       cartItems: [],
       cartImage: 'https://place-hold.it/100x100',
-      cartUrl: '/getBasket.json',
-      showCart: true      
+      cartIsVisible: true      
     }
   },
 
   methods: {
     addProduct(product) {
+      console.log('product: ', product);
       let find = this.cartItems.find(el => el.id_product === product.id_product)
       if (find) {
         this.$parent.putJSON(`/api/cart/${find.id_product}`, {quantity: 1})
@@ -42,7 +42,8 @@ let cart = {
             } 
           })
       } else {
-        let prod = Object.assign({quantity: 1}, product)
+        let prod = Object.assign({quantity: 1, sum: product.price}, product)
+        console.log('product: ', product);
         this.$parent.postJSON('/api/cart', prod)
           .then(data => {
             this.cartItems.push(prod)
@@ -51,29 +52,35 @@ let cart = {
     },
 
     removeProduct(product) {
-    //   this.$parent.getJSON(`${API_URL}/deleteFromBasket.json`)
-    //     .then (data => {
-    //       if (data.result) {
-    //         if (product.quantity > 1) {
-    //           product.quantity --
-    //         } else {
-    //           this.cartItems.splice(this.cartItems.indexOf(product), 1)
-    //         }
-    //       }
-    //     })
+      console.log('delete product: ', product);
+      if (product.quantity > 1) {
+        this.$parent.putJSON(`/api/cart/${product.id_product}`, {quantity: -1})
+          .then(data => {
+            if(data.result) {
+              product.quantity--
+            } 
+          })
+        } else {
+          this.$parent.deleteJSON(`/api/cart/${product.id_product}`)
+            .then(data => {
+              if(data.result) {
+                this.cartItems.splice(this.cartItems.indexOf(product), 1)
+              }
+            })
+        }
     },
 
-    toggleCart() {
-      this.showCart = !this.showCart
+    showCart() {
+      this.cartIsVisible = !this.cartIsVisible
     }
   },
 
   template: `
   <div>
     <input id="cart_button" class="cart-button" type="button" value="Cart" 
-      @click="toggleCart">
+      @click="showCart">
     <div id="cart" class="cart"
-      v-show="showCart">       
+      v-show="cartIsVisible">       
       <cart-item
         v-for="cartItem of cartItems"
         :img="cartImage" 
@@ -98,4 +105,5 @@ let cart = {
         }
       })
   } 
+  
 }

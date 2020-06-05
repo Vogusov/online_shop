@@ -1,7 +1,4 @@
-// const API_URL = 'https://raw.githubusercontent.com/Vogusov/store_API/master';
-
-
-let app = new Vue ({
+let app = new Vue({
   el: '#app',
   data: {},
 
@@ -17,34 +14,49 @@ let app = new Vue ({
 
     putJSON(url, data) {
       return fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(result => result.json())
-      .catch(error => {
-        this.$refs.err.setError(error)
-        console.log(error);
-      })         
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(result => result.json())
+        .catch(error => {
+          this.$refs.err.setError(error)
+          console.log(error);
+        })
     },
 
     postJSON(url, data) {
       return fetch(url, {
-        method: 'POST',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(result => result.json())
+        .catch(error => {
+          this.$refs.err.setError(error)
+          console.log(error);
+        })
+    },
+
+    deleteJSON(url) {
+      return fetch(url, {
+        method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        },        
       })
       .then(result => result.json())
       .catch(error => {
         this.$refs.err.setError(error)
         console.log(error);
-      })        
-    }    
+      })
+    },
     
+
   },
 
   components: {

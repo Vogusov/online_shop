@@ -26,9 +26,7 @@ let products = {
     }
   },
   
-  methods: {
-    
-  },
+  methods: {},
   
   template: `
     <div id="products" class="products">
@@ -48,7 +46,6 @@ let products = {
   mounted() {
     this.$parent.getJSON(`/api/products`)
       .then(data => {
-        console.log('Products: ', data);
         for (let el of data) {
           this.products.push(el);
           this.filtered.push(el);

@@ -1,7 +1,10 @@
 const express = require('express')
-const app = express()
 const fs = require('fs')
 const cart = require('./cartRouter')
+
+const app = express()
+const port = 1000
+
 
 app.use(express.json())
 app.use('/', express.static('public'))
@@ -17,4 +20,5 @@ app.get('/api/products', (req, res) => {
   })
 }) 
 
-app.listen(1000, () => console.log('listenin at 1000'))
+
+app.listen(port, () => console.log(`server is runnin' on port ${port}`))

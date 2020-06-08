@@ -26,7 +26,7 @@ let cart = {
     return {
       cartItems: [],
       cartIsVisible: false,
-      cartIsEmpty: false,      
+      cartIsEmpty: true,      
     }
   },
   
@@ -47,7 +47,11 @@ let cart = {
         this.$parent.postJSON('/api/cart', prod)
           .then(data => {
             this.cartItems.push(prod)
+            return this.cartItems
           })
+          .then(cartItems => 
+            cartItems.length === 0 ? this.cartIsEmpty = true : this.cartIsEmpty = false
+          )
       }
     },
 
@@ -66,17 +70,17 @@ let cart = {
               if(data.result) {
                 this.cartItems.splice(this.cartItems.indexOf(product), 1)
               }
+              return this.cartItems
             })
+            .then(cartItems => 
+              cartItems.length === 0 ? this.cartIsEmpty = true : this.cartIsEmpty = false
+            )
         }
-    },
-
-    
+    },    
 
     showCart() {
       this.cartIsVisible = !this.cartIsVisible
-    },
-
-    
+    },   
 
   },
 
@@ -85,9 +89,9 @@ let cart = {
     
     <input id="cart_button" class="cart-button" type="button" value="Корзина" 
       @click="showCart">
-    <div id="cart" class="cart"
-      
+    <div id="cart" class="cart"      
       v-show="cartIsVisible">
+      <div class="cart__arrow"></div>
       <div v-show="cartIsEmpty">
         Корзина пуста
       </div>       
@@ -109,11 +113,16 @@ let cart = {
   mounted() {
     this.$parent.getJSON(`/api/cart`)
       .then(data => {
-        console.log('Cart contains: ', data);
+        console.log('Cart contains: ', data)
         for (let el of data.contents) {
-          this.cartItems.push(el);
+          this.cartItems.push(el)          
         }
+        return this.cartItems
       })
+      
+      .then(cartItems =>
+      cartItems.length === 0 ? this.cartIsEmpty = true : this.cartIsEmpty = false
+    )     
      
   } 
   

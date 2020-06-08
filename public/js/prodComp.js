@@ -21,7 +21,7 @@ let products = {
     return {
       filtered: [],
       products: [],
-      imgCatalog: 'https://place-hold.it/200x200',
+      // imgCatalog: './images/product_101.jpg',
       catalogUrl: '/catalog.json',
     }
   },
@@ -33,7 +33,7 @@ let products = {
       <product
         v-for="product of filtered"
         :key="product.id_product"
-        :img="imgCatalog"
+        :img="product.image"
         :product="product">
       </product>
     </div>

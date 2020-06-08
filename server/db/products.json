@@ -1,52 +1,65 @@
 [
   {
     "id_product": 101,
-    "product_name": "Ноутбук",
-    "price": 666
+    "product_name": "Игровая приставка Playstation 4",
+    "price": 31000,
+    "image": "./images/product_101.jpg",
+    "discount": "true"
   },
   {
     "id_product": 102,
-    "product_name": "Мышка",
-    "price": 1000
+    "product_name": "Ноутбук Apple MacBook Pro 13 128Gb",
+    "price": 90000,
+    "image": "./images/product_102.jpg"
   },
   {
     "id_product": 103,
-    "product_name": "Флэшка 16Гб",
-    "price": 456
+    "product_name": "Смартфон Xiaomi Redmi Note 8 Pro",
+    "price": 18000,
+    "image": "./images/product_103.jpg"
   },
   {
     "id_product": 104,
-    "product_name": "Монитор",
-    "price": 12000
+    "product_name": "Смартфон Samsung Galaxy S20 Ultra",
+    "price": 93000,
+    "image": "./images/product_104.jpg"
   },
   {
     "id_product": 105,
-    "product_name": "Коврик для мышки",
-    "price": 500
+    "product_name": "Игровая приставка Microsoft Xbox One",
+    "price": 25000,
+    "image": "./images/product_105.jpg"
   },
   {
     "id_product": 106,
-    "product_name": "Ноутбук игровой",
-    "price": 120500
+    "product_name": "Ноутбук Lenovo IdeaPad",
+    "price": 39430,
+    "image": "./images/product_101.jpg"
   },
   {
     "id_product": 107,
-    "product_name": "Флэшка 256Гб",
-    "price": 1500
+    "product_name": "Мышь Logitech",
+    "price": 1400,
+    "image": "./images/product_107.jpg"
   },
   {
     "id_product": 108,
-    "product_name": "Колонки",
-    "price": 2500
+    "product_name": "Монитор Dell",
+    "price": 89000,
+    "image": "./images/product_108.jpg",
+    "discount": "true"
+
   },
   {
     "id_product": 109,
-    "product_name": "Мышка б/п",
-    "price": 1500
+    "product_name": "Монитор Samsung",
+    "price": 9700,
+    "image": "./images/product_109.jpg"
   },
   {
     "id_product": 110,
-    "product_name": "Мышка игровая",
-    "price": 2000
+    "product_name": "Игровая мышь A4Tech",
+    "price": 1550,
+    "image": "./images/product_110.jpg"
   }  
 ]

@@ -25,11 +25,11 @@ let cart = {
   data() {
     return {
       cartItems: [],
-      cartImage: 'https://place-hold.it/100x100',
-      cartIsVisible: true      
+      cartIsVisible: false,
+      cartIsEmpty: false,      
     }
   },
-
+  
   methods: {
     addProduct(product) {
       console.log('product: ', product);
@@ -70,20 +70,30 @@ let cart = {
         }
     },
 
+    
+
     showCart() {
       this.cartIsVisible = !this.cartIsVisible
-    }
+    },
+
+    
+
   },
 
-  template: `
+    template: `
   <div>
-    <input id="cart_button" class="cart-button" type="button" value="Cart" 
+    
+    <input id="cart_button" class="cart-button" type="button" value="Корзина" 
       @click="showCart">
     <div id="cart" class="cart"
-      v-show="cartIsVisible">       
+      
+      v-show="cartIsVisible">
+      <div v-show="cartIsEmpty">
+        Корзина пуста
+      </div>       
       <cart-item
         v-for="cartItem of cartItems"
-        :img="cartImage" 
+        :img="cartItem.image" 
         :key="cartItem.id_product"
         :cartItem="cartItem">
       </cart-item>
@@ -101,9 +111,10 @@ let cart = {
       .then(data => {
         console.log('Cart contains: ', data);
         for (let el of data.contents) {
-          this.cartItems.push(el);          
+          this.cartItems.push(el);
         }
       })
+     
   } 
   
 }

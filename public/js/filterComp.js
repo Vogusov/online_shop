@@ -17,7 +17,7 @@ let search = {
   template: `
     <form action="#" class="search-form" @submit.prevent="filter">
       <input type="text" class="search-field" v-model="userSearch">
-      <input type="button" value="Search" class="search-button" @click="filter">
+      <input type="button" value="Поиск" class="search-button" @click="filter">
     </form>
   `
 }

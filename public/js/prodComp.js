@@ -21,7 +21,6 @@ let products = {
     return {
       filtered: [],
       products: [],
-      // imgCatalog: './images/product_101.jpg',
       catalogUrl: '/catalog.json',
     }
   },

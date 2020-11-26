@@ -1,5 +1,22 @@
 {
     "amount": 0,
     "countGoods": 0,
-    "contents": []
+    "contents": [
+        {
+            "quantity": 1,
+            "sum": 18000,
+            "id_product": 103,
+            "product_name": "Смартфон Xiaomi Redmi Note 8 Pro",
+            "price": 18000,
+            "image": "./images/product_103.jpg"
+        },
+        {
+            "quantity": 1,
+            "sum": 93000,
+            "id_product": 104,
+            "product_name": "Смартфон Samsung Galaxy S20 Ultra",
+            "price": 93000,
+            "image": "./images/product_104.jpg"
+        }
+    ]
 }
